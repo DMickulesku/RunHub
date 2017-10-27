@@ -1,5 +1,15 @@
 import React from 'react';
-import { Button, StyleSheet, Image, Text, View } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Image,
+  Text,
+  View
+} from 'react-native';
+
+import {
+  Container,
+} from 'native-base'
 
 import { AuthSession } from 'expo';
 
@@ -12,17 +22,19 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Hello Runners</Text>
-        <Image
-          style={{width: 320, height: 220}}
-          source={require('./images/trail_run_splash.jpg')} />
-        <Button title="Welcome to RunHub" onPress={this._handlePressAsync} />
-        <Text>Find Your Fit</Text>
-        {this.state.result ? (
-          <Text>{JSON.stringify(this.state.result)}</Text>
-        ) : null}
+      <Container>
+        <View style={styles.container}>
+          <Text>Hello Runners</Text>
+          <Image
+            style={{width: 320, height: 220}}
+            source={require('./images/trail_run_splash.jpg')} />
+          <Button title="Welcome to RunHub" onPress={this._handlePressAsync} />
+          <Text>Find Your Fit</Text>
+          {this.state.result ? (
+            <Text>{JSON.stringify(this.state.result)}</Text>
+          ) : null}
         </View>
+      </Container>
     );
   }
 
@@ -77,7 +89,8 @@ export default class App extends React.Component {
        },
 
      }
-     return fetch('https://www.strava.com/api/v3/athlete', options)
+    //  return fetch('https://www.strava.com/api/v3/athlete', options)
+     return fetch('https://www.strava.com/api/v3/athlete/activities', options)
        .then(response => response.json())
        .then(response => {
          return response
