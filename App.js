@@ -1,18 +1,12 @@
-import React from 'react';
-import {
-  Button,
-  StyleSheet,
-  Image,
-  Text,
-  View
-} from 'react-native';
-
-import {
-  Container,
-} from 'native-base'
-
+import Expo from 'expo';
+import React, { Component } from 'react';
+import { Button, Image, Text, View, AppRegistry } from 'react-native';
+import { Container, Content } from 'native-base';
+import styles from './ui/styles';
+import Head from './ui/Head';
 import { AuthSession } from 'expo';
 
+AppRegistry.registerComponent('RunHub', () => App)
 
 //Auth Session
 export default class App extends React.Component {
@@ -23,23 +17,24 @@ export default class App extends React.Component {
   render() {
     return (
       <Container>
-        <View style={styles.container}>
-          <Text>Hello Runners</Text>
-          <Image
-            style={{width: 320, height: 220}}
-            source={require('./images/trail_run_splash.jpg')} />
-          <Button title="Welcome to RunHub" onPress={this._handlePressAsync} />
-          <Text>Find Your Fit</Text>
-          {this.state.result ? (
+      <Head />
+        <Content>
+          <View style={styles.container}>
+            <Image
+              style={{width: 320, height: 220}}
+              source={require('./images/trail_run_splash.jpg')} />
+            <Button title="Login to RunHub" onPress={this._handlePressAsync} />
+            <Text>Find Your Fit</Text>
+              {this.state.result ? (
             <Text>{JSON.stringify(this.state.result)}</Text>
-          ) : null}
-        </View>
+              ) : null}
+          </View>
+        </Content>
       </Container>
     );
-  }
+  };
 
   _handlePressAsync = async () => {
-    console.log('hello');
     let redirectUrl = AuthSession.getRedirectUrl();
     let result = await AuthSession.startAsync({
       authUrl:
@@ -78,7 +73,7 @@ export default class App extends React.Component {
        .catch(err => {
          console.log(err)
        })
-  }
+  };
 
   getUserInfo = (accessToken) => {
     const options = {
@@ -88,7 +83,7 @@ export default class App extends React.Component {
          'Authorization': 'Bearer ' + accessToken,
        },
 
-     }
+     };
     //  return fetch('https://www.strava.com/api/v3/athlete', options)
      return fetch('https://www.strava.com/api/v3/athlete/activities', options)
        .then(response => response.json())
@@ -101,12 +96,3 @@ export default class App extends React.Component {
   }
 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#dddcdc',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
