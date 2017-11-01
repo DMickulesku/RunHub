@@ -21,7 +21,8 @@ export default class App extends Component {
       loggedIn: false,
       viewHome: false,
       viewEvents: false,
-      createEvent: false
+      viewCreateEvent: false,
+      schedule: []
     };
   };
 
@@ -36,7 +37,7 @@ export default class App extends Component {
     this.setState( {
       viewHome: true,
       viewEvents: false,
-      createEvent: false
+      viewCreateEvent: false
     })
   };
 
@@ -44,17 +45,28 @@ export default class App extends Component {
     this.setState( {
       viewEvents: true,
       viewHome: false,
-      createEvent: false
+      viewCreateEvent: false
     })
   };
 
   createEvent = () => {
     this.setState( {
-      createEvent: true,
+      viewCreateEvent: true,
       viewHome: false,
       viewEvents: false
     })
   };
+
+  addToSchedule = (event) => {
+    console.log(event);
+    var newSchedule = this.state.schedule
+    // var eventList = this.state.eventList
+    newSchedule.push(event)
+    this.setState( {
+      ...this.state,
+      schedule: newSchedule
+    })
+  }
 
 
 
@@ -84,10 +96,12 @@ export default class App extends Component {
           <View>
             <Home viewHome={this.state.viewHome}
                   viewEvents={this.state.viewEvents}
-                  createEvent={this.state.createEvent}
+                  viewCreateEvent={this.state.viewCreateEvent}
                   home={this.home}
                   events={this.events}
                   createEvent={this.createEvent}
+                  schedule={this.state.schedule}
+                  addToSchedule={this.addToSchedule}
                   />
           </View>
         </Content>

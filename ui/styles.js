@@ -35,9 +35,6 @@ export default styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
-  textBackground: {
-
-  },
   cardContent: {
     flex: 1,
   }

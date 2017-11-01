@@ -33,7 +33,7 @@ const CreateEvent = (props) => {
             </Item>
           </Form>
         </View>
-          <Button block light>
+          <Button onPress={props.home} block light>
           <Text>Submit</Text>
           </Button>
         </Content>

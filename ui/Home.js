@@ -7,40 +7,60 @@ import EventList from './EventList';
 import Head from './Head';
 import RootTabs from './RootTabs';
 import CreateEvent from './CreateEvent';
+import EventCard from './EventCard';
 
 // export default class Home extends Component {
 
 const Home = (props) => {
     var viewEvents = props.viewEvents
     var viewHome = props.viewHome
-    var createEvent = props.createEvent
-    console.log(props);
+    var viewCreateEvent = props.viewCreateEvent
+
 
     return (
       <Container>
       <Head />
         <Content>
-          <View style={styles.container}>
+
 
             {viewHome &&
-              <Image
-                style={styles.backgroundImage}
-                source={require('../images/muddy_trail_run.jpg')} >
-                <View style={styles.textBackground}>
-                  <Icon name='ios-contact' />
-                  <Text style={styles.homeTitle}> WELCOME, DAN! </Text>
-                  <Text style={styles.homeText}> Your Schedule: </Text>
-                </View>
-              </Image>
+              <View >
+              <Container style={styles.container}>
+                <Image
+                  style={styles.backgroundImage}
+                  source={require('../images/muddy_trail_run.jpg')} >
+                  <View style={styles.textBackground}>
+                    <Icon name='ios-contact' />
+                    <Text style={styles.homeTitle}> WELCOME, DAN! </Text>
+                    <Text style={styles.homeText}> Your Schedule: </Text>
+
+                  </View>
+                </Image>
+
+
+              </Container>
+              {props.schedule.map((event, index) => {
+                return <EventCard key={index}
+                                  index={index}
+                                  name={event.name}
+                                  date={event.date}
+                                  time={event.time}
+                                  host={event.host}
+                                  image={event.image}
+                                  event={event}
+                                  addToSchedule={props.addToSchedule}/>
+
+              })}
+              </View>
             }
-          </View>
+
 
           {viewEvents &&
-            <EventList />
+            <EventList  addToSchedule={props.addToSchedule}/>
           }
 
-          {createEvent &&
-            <CreateEvent />
+          {viewCreateEvent &&
+            <CreateEvent home={props.home}/>
           }
 
         </Content>
