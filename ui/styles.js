@@ -32,8 +32,17 @@ export default styles = StyleSheet.create({
     opacity: 0.7,
   },
   backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
+    // flex: 1,
+    width: 400,
+    height: 250,
+    // alignItems: 'center',
+    // justifyContent: 'center'
+    // resizeMode: 'cover',
+  },
+  textBackground: {
+    // flex: 1,
+    // alignItems: 'center',
+    // justifyContent: 'center'
   },
   cardContent: {
     flex: 1,

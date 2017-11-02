@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image } from 'react-native';
-import { Container, Content, Icon } from 'native-base';
+import { Container, Content, Icon, Button } from 'native-base';
 import styles from './Styles';
 import Navigation from './Navigation';
 import EventList from './EventList';
@@ -20,50 +20,45 @@ const Home = (props) => {
     return (
       <Container>
       <Head />
-        <Content>
+      <Content>
 
-
-            {viewHome &&
-              <View >
-              <Container style={styles.container}>
-                <Image
-                  style={styles.backgroundImage}
-                  source={require('../images/muddy_trail_run.jpg')} >
-                  <View style={styles.textBackground}>
-                    <Icon name='ios-contact' />
-                    <Text style={styles.homeTitle}> WELCOME, DAN! </Text>
-                    <Text style={styles.homeText}> Your Schedule: </Text>
-
-                  </View>
-                </Image>
-
-
-              </Container>
-              {props.schedule.map((event, index) => {
-                return <EventCard key={index}
-                                  index={index}
-                                  name={event.name}
-                                  date={event.date}
-                                  time={event.time}
-                                  host={event.host}
-                                  image={event.image}
-                                  event={event}
-                                  addToSchedule={props.addToSchedule}/>
-
-              })}
+      {viewHome &&
+        <View>
+          <View style={styles.container}>
+            <Image
+              style={styles.backgroundImage}
+              source={require('../images/muddy_trail_run.jpg')} >
+              <View style={styles.textBackground}>
+                <Text style={styles.homeTitle}> WELCOME, DAN! </Text>
+                <Text style={styles.homeText}> Your Schedule: </Text>
               </View>
-            }
+            </Image>
+          </View>
+          <View>
+          {props.schedule.map((event, index) => {
+            return <EventCard key={index}
+                              index={index}
+                              name={event.name}
+                              date={event.date}
+                              time={event.time}
+                              host={event.host}
+                              image={event.image}
+                              event={event}
+                              addToSchedule={props.addToSchedule}/>
+          })}
+          </View>
+        </View>
+        }
 
+        {viewEvents &&
+          <EventList  addToSchedule={props.addToSchedule}/>
+        }
 
-          {viewEvents &&
-            <EventList  addToSchedule={props.addToSchedule}/>
-          }
+        {viewCreateEvent &&
+          <CreateEvent home={props.home}/>
+        }
+      </Content>
 
-          {viewCreateEvent &&
-            <CreateEvent home={props.home}/>
-          }
-
-        </Content>
       <Navigation home={props.home}
                   events={props.events}
                   createEvent={props.createEvent}/>

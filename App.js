@@ -58,9 +58,7 @@ export default class App extends Component {
   };
 
   addToSchedule = (event) => {
-    console.log(event);
     var newSchedule = this.state.schedule
-    // var eventList = this.state.eventList
     newSchedule.push(event)
     this.setState( {
       ...this.state,
