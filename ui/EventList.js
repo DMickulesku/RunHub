@@ -11,16 +11,22 @@ class EventList extends Component {
     super(props)
     this.state= {
       events: [{
+        name: 'Apex',
+        date: '11/4/2017',
+        time: '7:30AM',
+        host: 'Dan M',
+        image: require('../images/Apex.png')
+      },{
         name: 'Centennial Cone',
         date: '11/5/2017',
         time: '7:15AM',
-        host: 'Dan M',
+        host: 'Mark B',
         image: require('../images/centennial_cone.png')
       }, {
         name: 'Park Hill/ Stapleton Loop',
         date: '11/10/2017',
         time: '6:15PM',
-        host: 'Dan M',
+        host: 'Brian B',
         image: require('../images/Park_Hill_Stapleton.png')
       }, {
         name: 'Bergen Peak',

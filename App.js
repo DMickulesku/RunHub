@@ -66,6 +66,18 @@ export default class App extends Component {
     })
   }
 
+  removeFromSchedule = (event) => {
+    var newSchedule = this.state.schedule
+
+    newSchedule= newSchedule.filter(run => {
+      return run.name!=event.name
+    })
+    console.log(newSchedule);
+    this.setState( {
+      ...this.state,
+      schedule: newSchedule
+    })
+  }
 
 
 
@@ -100,6 +112,7 @@ export default class App extends Component {
                   createEvent={this.createEvent}
                   schedule={this.state.schedule}
                   addToSchedule={this.addToSchedule}
+                  removeFromSchedule={this.removeFromSchedule}
                   />
           </View>
         </Content>

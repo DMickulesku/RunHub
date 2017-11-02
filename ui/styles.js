@@ -13,8 +13,16 @@ export default styles = StyleSheet.create({
     textAlign: 'center',
   },
   text: {
-    color: '#201e3a',
+    color: '#632f2f',
+    fontSize: 14,
     textAlign: 'center',
+    backgroundColor: '#aaaaaa',
+    opacity: 0.7,
+  },
+  signUpText: {
+    color: '#632f2f',
+    textAlign: 'right',
+    fontSize: 10,
   },
   homeTitle: {
     color: '#632f2f',

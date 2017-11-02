@@ -8,6 +8,7 @@ import Head from './Head';
 import RootTabs from './RootTabs';
 import CreateEvent from './CreateEvent';
 import EventCard from './EventCard';
+import HomeEventCard from './HomeEventCard';
 
 // export default class Home extends Component {
 
@@ -36,7 +37,7 @@ const Home = (props) => {
           </View>
           <View>
           {props.schedule.map((event, index) => {
-            return <EventCard key={index}
+            return <HomeEventCard key={index}
                               index={index}
                               name={event.name}
                               date={event.date}
@@ -44,9 +45,12 @@ const Home = (props) => {
                               host={event.host}
                               image={event.image}
                               event={event}
-                              addToSchedule={props.addToSchedule}/>
+                              removeFromSchedule={props.removeFromSchedule}/>
           })}
           </View>
+              <Text style={styles.homeText}> {props.schedule.length === 0 ? 'no events in your schedule' : 'no more events scheduled'}</Text>
+
+
         </View>
         }
 

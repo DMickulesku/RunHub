@@ -14,13 +14,14 @@ const Login = (props) => {
       <Content>
         <View style={styles.container}>
           <Image
-            style={{width: 400, height: 450}}
+            style={{width: 400, height: 435}}
             source={require('../images/trail_legs.jpg')} />
         </View>
-        <View>
-          <Button onPress={props.login} block light>
+        <View style={styles.contianer}>
+          <Button onPress={props.login} style={{marginTop: 10}} block primary>
           <Text>Login</Text>
           </Button>
+          <Text style={styles.signUpText}>not a member? Sign up!</Text>
         </View>
       </Content>
     </Container>

@@ -34,7 +34,7 @@ const CreateEvent = (props) => {
             </Form>
           </View>
           <View>
-            <Button onPress={props.home} block light>
+            <Button onPress={props.home} style={{marginTop: 10}} block primary>
             <Text>Submit</Text>
             </Button>
           </View>
